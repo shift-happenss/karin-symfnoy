@@ -1,0 +1,51 @@
+{% extends 'basestudent.html.twig' %}
+
+{% block body %}
+<div style="margin-top: 100px;">
+    <h1>Passer l'examen : {{ examen.titre }}</h1>
+
+    <form method="POST" action="{{ path('passer_examen', {'id': examen.id}) }}">
+        {% for question in questions %}
+            <div class="question">
+                <h3>{{ question.texte }}</h3>
+                <p>Type de question : {{ question.type }}</p>
+
+                {% set options = ['A', 'B', 'C', 'D'] %}
+
+                {# Affichage des boutons radio pour les questions à choix unique #}
+                {% if question.type == 'Choix Unique' %}
+                    {% for option in options %}
+                        <div>
+                            <input type="radio"
+                                   id="question_{{ question.id }}_{{ option }}"
+                                   name="question_{{ question.id }}"
+                                   value="{{ option }}">
+                            <label for="question_{{ question.id }}_{{ option }}">
+                                {{ option }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {# Affichage des checkboxes pour les questions à choix multiple #}
+                {% if question.type == 'Multi-choix' %}
+                    {% for option in options %}
+                        <div>
+                            <input type="checkbox"
+                                   id="question_{{ question.id }}_{{ option }}"
+                                   name="question_{{ question.id }}[]"
+                                   value="{{ option }}">
+                            <label for="question_{{ question.id }}_{{ option }}">
+                                {{ option }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <hr>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">Soumettre l'examen</button>
+    </form>
+</div>
+{% endblock %}

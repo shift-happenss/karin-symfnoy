@@ -1,0 +1,53 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Liste des Catégories{% endblock %}
+
+{% block body %}
+{{ parent() }}
+  <h1>Liste des Catégories</h1>
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+
+    <form method="get">
+        <div class="form-group">
+            <label for="titre">Titre</label>
+            <input type="text" name="titre" id="titre" class="form-control" value="{{ titre }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Chercher</button>
+    </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}
+        <tr>
+          <td>{{ category.id }}</td>
+          <td>{{ category.titre }}</td>
+          <td>{{ category.description|striptags|slice(0, 50) ~ '...' }}</td>
+          <td>
+            <a href="{{ path('categorie_show', {'id': category.id}) }}" class="btn btn-info btn-sm">Voir</a>
+            <a href="{{ path('categorie_edit', {'id': category.id}) }}" class="btn btn-primary btn-sm">Modifier</a>
+            <form method="post" action="{{ path('categorie_delete', {'id': category.id}) }}" onsubmit="return confirm('Êtes-vous sûr ?');" style="display:inline-block;">
+              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
+              <button class="btn btn-danger btn-sm">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="4">Aucune catégorie trouvée.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ path('categorie_new') }}" class="btn btn-success">Créer une nouvelle catégorie</a>
+{% endblock %}

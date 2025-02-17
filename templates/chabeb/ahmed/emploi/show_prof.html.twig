@@ -1,0 +1,49 @@
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Liste des Emplois pour les Enseignants{% endblock %}
+
+{% block body %}
+
+ 
+<section class="home_banner_area">
+
+<div class="main_title">
+<h2 class="mb-3 text-blue">Listes Des Emplois</h2>
+<p>
+Chers Enseignants ,n'hesitez pas de consulter Vos Emplois de temps REGULIEREMENT
+</p>
+    
+<div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Proprietaire</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for emploi in emplois %}
+            <tr>
+                
+                <td>{{ emploi.titre }}</td>
+                <td>{{ emploi.description }}</td>
+                <td>{{ emploi.proprietaire.name }}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun emplois trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

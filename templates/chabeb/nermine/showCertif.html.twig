@@ -1,0 +1,13 @@
+{% extends 'baseback.html.twig' %}
+
+
+
+{% block title %}Détails de la Formation{% endblock %}
+{% block body %}
+<h1>{{ certificat.title }}</h1>
+<p>Délivré à : {{ certificat.userName }}</p>
+<p>Formation : {{ certificat.formation.title }}</p>
+<p>Date : {{ certificat.dateIssued|date('d-m-Y') }}</p>
+
+<a href="{{ path('certificat_download', { id: certificat.id }) }}" class="btn btn-primary">Télécharger le certificat</a>
+{% endblock %}

@@ -1,0 +1,51 @@
+{# templates/examen/new.html.twig #}
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Créer un Examen{% endblock %}
+
+{% block body %}
+<div style="margin-top: 100px;">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Créer un nouvel examen</h1>
+
+        <div class="card shadow">
+            <div class="card-body">
+                {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+                    
+                    {# Champ Titre #}
+                    <div class="mb-3">
+                        {{ form_label(form.titre, 'Titre', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.titre, {'attr': {'class': 'text-danger'}}) }}
+                    </div>
+
+                    {# Champ Description #}
+                    <div class="mb-3">
+                        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+                        {{ form_errors(form.description, {'attr': {'class': 'text-danger'}}) }}
+                    </div>
+
+                    {# Champ Cours #}
+                    <div class="mb-3">
+                        {{ form_label(form.cours, 'Cours', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.cours, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.cours, {'attr': {'class': 'text-danger'}}) }}
+                    </div>
+
+                    {# Boutons #}
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="{{ path('examen_index') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Retour à la liste
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-save"></i> {{ button_label|default('Enregistrer') }}
+                        </button>
+                    </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{# templates/cours/show.html.twig #}
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Détails du Cours{% endblock %}
+
+{% block body %}
+    <h1>Détails du Cours</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ cour.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ cour.description }}</td>
+            </tr>
+            <tr>
+                <th>Date de Début</th>
+                <td>{{ cour.dateDebut ? cour.dateDebut|date('Y-m-d H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de Fin</th>
+                <td>{{ cour.dateFin ? cour.dateFin|date('Y-m-d H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td><a href="{{ cour.lien }}" target="_blank">{{ cour.lien }}</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cours_index') }}" class="btn btn-secondary">Retour à la liste</a>
+    <a href="{{ path('cours_edit', {'id': cour.id}) }}" class="btn btn-warning">Modifier</a>
+{% endblock %}

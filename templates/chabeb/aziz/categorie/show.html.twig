@@ -1,0 +1,15 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Détails de la Catégorie{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+  <h1>{{ category.titre }}</h1>
+
+  <p><strong>Titre:</strong> {{ category.titre }}</p>
+  <p><strong>Description:</strong> {{ category.description }}</p>
+
+  <a href="{{ path('categorie_edit', {'id': category.id}) }}" class="btn btn-primary">Modifier</a>
+  <a href="{{ path('categorie_index') }}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

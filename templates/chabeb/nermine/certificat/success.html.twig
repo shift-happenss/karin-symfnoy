@@ -1,0 +1,14 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Certificat{% endblock %}
+
+{% block body %}
+ <div style="margin-top: 200px;">
+<h1>Certificat attribué !</h1>
+<p>Formation : {{ certificat.formation }}</p>
+<p>Date : {{ certificat.dateAttribution|date('d/m/Y') }}</p>
+<p>Code : <strong>{{ certificat.codeUnique }}</strong></p>
+<a href="{{ path('formation_index') }}">Retour</a>
+</div>
+{% endblock %}
+

@@ -1,0 +1,57 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Liste des Ressources{% endblock %}
+
+{% block body %}
+{{ parent() }}
+  <h1>Liste des Ressources</h1>
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+
+    <form method="get">
+        <div class="form-group">
+            <label for="titre">Titre</label>
+            <input type="text" name="titre" id="titre" class="form-control" value="{{ titre }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Chercher</button>
+    </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Catégorie</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ressource in ressources %}
+        <tr>
+          <td>{{ ressource.id }}</td>
+          <td>{{ ressource.titre }}</td>
+          <td>{{ ressource.description|striptags|slice(0, 50) ~ '...' }}</td>
+          <td>{{ ressource.type }}</td>
+          <td>{{ ressource.category.titre }}</td>
+          <td>
+            <a href="{{ path('ressource_show', {'id': ressource.id}) }}" class="btn btn-info btn-sm">Voir</a>
+            <a href="{{ path('ressource_edit', {'id': ressource.id}) }}" class="btn btn-primary btn-sm">Modifier</a>
+            <form method="post" action="{{ path('ressource_delete', {'id': ressource.id}) }}" onsubmit="return confirm('Êtes-vous sûr ?');" style="display:inline-block;">
+              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ressource.id) }}">
+              <button class="btn btn-danger btn-sm">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="6">Aucune ressource trouvée.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ path('ressource_new') }}" class="btn btn-success">Créer une nouvelle ressource</a>
+{% endblock %}

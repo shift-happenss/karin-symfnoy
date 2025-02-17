@@ -1,0 +1,28 @@
+{# templates/examen/show.html.twig #}
+{% extends 'basestudent.html.twig' %}
+
+{% block title %}Détails de l'Examen{% endblock %}
+
+{% block body %}
+    <h1>Détails de l'Examen</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ examen.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ examen.description }}</td>
+            </tr>
+            <tr>
+                <th>Cours</th>
+                <td>{{ examen.cours.titre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('examen_index') }}" class="btn btn-secondary">Retour à la liste</a>
+    <a href="{{ path('examen_edit', {'id': examen.id}) }}" class="btn btn-warning">Modifier</a>
+{% endblock %}

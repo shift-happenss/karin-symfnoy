@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<section class="home_banner_area">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100" style="padding-top: 250px;">
+        <div class="col-lg-4">
+            <div class="register_form text-center">
+                <h3>Welcome BACK</h3>
+                <p>Enter your Id and password</p>
+
+                {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+
+                <form class="form_area" id="myForm" action="{{ path('login') }}" method="post">
+    <div class="row">
+        <div class="col-lg-12 form_group">
+            <!-- Change _username to _id -->
+            <input name="_id" class="form-control" placeholder="Your ID" required type="text" value="{{ last_id }}" />
+            <input id="password" name="_password" class="form-control" placeholder="Your Password" required type="password" />
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div class="col-lg-12 text-center">
+            <button class="primary-btn btn btn-primary">Login</button>
+        </div>
+    </div>
+</form>
+
+                         
+                        <div class="col-lg-12 text-center mt-3">
+                            <a href="{{ path('register') }}">Don’t have an account yet?</a>
+                        </div>
+                        <div class="col-lg-12 text-center mt-3">
+                            <a href="{{ path('homepage') }}">Forgotten password?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>       
+{% endblock %}

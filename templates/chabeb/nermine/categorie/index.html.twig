@@ -1,0 +1,35 @@
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Liste des Catégories{% endblock %}
+
+{% block body %}
+    <h1>Liste des Catégories</h1>
+
+    <a href="{{ path('categorie_new') }}" class="btn btn-success">Ajouter une Catégorie</a>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categorie in categories %}
+                <tr>
+                    <td>{{ categorie.id }}</td>
+                    <td>{{ categorie.name }}</td>
+                    <td>
+                        <a href="{{ path('categorie_show', {'id': categorie.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                        <a href="{{ path('categorie_edit', {'id': categorie.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                        <form method="post" action="{{ path('categorie_delete', {'id': categorie.id}) }}" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('Confirmer la suppression ?');">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

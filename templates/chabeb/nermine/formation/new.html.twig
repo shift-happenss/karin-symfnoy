@@ -1,0 +1,14 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Créer une Formation{% endblock %}
+
+{% block body %}
+ <div style="margin-top: 100px;">
+    <h1>Créer une nouvelle Formation</h1>
+
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+

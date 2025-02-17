@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    {% block css %}
+    <!-- Fontfaces CSS-->
+    <link href="{{ asset('css/font-face.css') }}" rel="stylesheet media="all">
+    <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{{ asset('vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{{ asset('vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/wow/animate.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/slick/slick.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet" media="all">
+    {% endblock %}
+
+</head>
+
+<header class="header-desktop3 d-none d-lg-block" style="background-color:rgb(35, 35, 61);">
+
+            <div class="section__content section__content--p35">
+                <div class="header3-wrap">
+                    <div class="header__logo">
+                        <a href="#">
+                            <img src="{{ asset('images/icon/loogoo.png') }}" alt="Logo">
+                           
+                        </a>
+                    </div>
+                    <div class="header__navbar">
+                        <ul class="list-unstyled">
+                            
+                            <li>
+                                <a href="{{ path('cours_index') }}"</a>
+                                    <i class="fas fa-book"></i>
+                                    <span class="bot-line"></span>Cours</a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span class="bot-line"></span>Formations</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="{{ path('categorie_index') }}">Voir Categories</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('formation_show_user') }}">Consulter Formations</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('liste_certificats') }}">Mes Certificat</a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="#"</a>
+                                    <i class="fas fa-heartbeat"></i>
+                                    <span class="bot-line"></span>Psycologie</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="{{ path('examen_index') }}">Consulter liste Psycologues </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('consultation_index') }}">Mes Consultations </a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="#"</a>
+                                    <i class="fas fa-copy"></i>
+                                    <span class="bot-line"></span>Examens</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="{{ path('examen_index') }}">Gestion des examens</a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-newspaper"></i>
+                                    <span class="bot-line"></span>Blogs</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="{{ path('category_show_user') }}">Consulter Categories</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('ressource_index') }}">Gestion Ressources</a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="bot-line"></span>Evenements</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="{{ path('event_show_teacher') }}">Evenements</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('emploi_show_teacher') }}">Emploi</a>
+                                    </li>  
+                                </ul>
+                            </li>
+                            <li class="has-sub ">
+                              
+                                <div class="profi">
+                                      <a href="#">
+                                      <img src="{{ asset('images/icon/profile.png') }}" alt="user">
+                                      </a>
+                                </div>
+                                
+                                <ul class="header3-sub-list list-unstyled" style="margin-top: 90px;">
+                                    <li>
+                                        <div class="content">
+                                         <i class="fas fa-user"></i>{{ app.user.name }}<br>
+                                         <i class="fas fa-envelope"></i> {{ app.user.email }}
+                                         </div>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('homepage') }}">
+                                         <i class="zmdi zmdi-home"></i>home</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('profileT') }}">
+                                         <i class="zmdi zmdi-account"></i>Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                         <i class="zmdi zmdi-settings"></i>Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('app_logout') }}">
+                                        <i class="zmdi zmdi-power"></i>Logout</a>
+                                    </li>
+                                    
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+    
+                        
+   
+        </header>
+
+   
+{% block body %}
+            
+        
+{% endblock %}
+{%block js%}
+    <!-- jQuery JS -->
+<script src="{{ asset('vendor/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('vendor/jquery-ui.min.js') }}"></script>
+<!-- Bootstrap JS -->
+<script src="{{ asset('vendor/bootstrap-4.1/popper.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
+<!-- Vendor JS -->
+<script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
+<script src="{{ asset('vendor/wow/wow.min.js') }}"></script>
+<script src="{{ asset('vendor/animsition/animsition.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+<script src="{{ asset('vendor/counter-up/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('vendor/counter-up/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('vendor/circle-progress/circle-progress.min.js') }}"></script>
+<script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+<script src="{{ asset('vendor/chartjs/Chart.bundle.min.js') }}"></script>
+<script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+{% endblock %}
+
+</body>
+
+</html>
+<!-- end document-->

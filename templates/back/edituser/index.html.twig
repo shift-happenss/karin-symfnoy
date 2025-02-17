@@ -1,0 +1,25 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Users details{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100" style="padding-top: 250px;">
+    <div class="col-lg-4">
+        <div class="register_form text-center">
+            <h3>Edit user</h3>
+            <p>Enter your informations below</p>
+
+            {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.prenom) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.numtel) }}
+                {{ form_row(form.password) }}
+                {{ form_row(form.role) }}
+
+                <button class="primary-btn btn btn-primary">Submit</button>
+            {{ form_end(form) }}
+            
+        </div>
+    </div>
+{% endblock %}

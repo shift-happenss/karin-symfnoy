@@ -1,0 +1,16 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Détails de la Ressource{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+  <h1>{{ ressource.titre }}</h1>
+
+  <p><strong>Description:</strong> {{ ressource.description }}</p>
+  <p><strong>Type:</strong> {{ ressource.type }}</p>
+  <p><strong>Catégorie:</strong> {{ ressource.category.titre }}</p>
+
+  <a href="{{ path('ressource_edit', {'id': ressource.id}) }}" class="btn btn-primary">Modifier</a>
+  <a href="{{ path('ressource_index') }}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

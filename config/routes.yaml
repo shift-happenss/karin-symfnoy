@@ -1,0 +1,50 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+# BACKOFFICE
+admin:
+  path: /admin
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: "back/admin/index.html.twig"
+
+
+#FRONT
+homepage:
+  path: /home
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: "front/home/index.html.twig"
+
+about:
+  path: /about
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: "front/about/index.html.twig"
+
+
+
+#PROFILES
+profileS:
+  path: /profile/s
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: "Profiles/profile_s/index.html.twig"
+profileP:
+  path: /profile/p
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: "Profiles/profile_p/index.html.twig"
+profileT:
+  path: /profile/t
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  defaults:
+    template: "Profiles/profile_t/index.html.twig"
+
+
+
+
+

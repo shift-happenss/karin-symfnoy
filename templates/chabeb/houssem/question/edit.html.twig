@@ -1,0 +1,32 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Modifier la Question{% endblock %}
+
+{% block body %}
+<div style="margin-top: 100px;">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Modifier la Question</h1>
+
+        {{ form_start(form, {'render_rest': false}) }}
+
+        <div class="mb-3">
+            {{ form_row(form.texte, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.type, {'attr': {'class': 'form-select'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.examen, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        
+       <BR> <a href="{{ path('question_index', {'examenId': question.examen.id}) }}" class="btn btn-secondary">Retour</a> <BR>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+
+{% endblock %}
+

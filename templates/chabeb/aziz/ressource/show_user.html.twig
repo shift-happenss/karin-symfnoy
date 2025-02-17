@@ -1,0 +1,58 @@
+{% set layout = 'baseparent.html.twig' %} {# Valeur par défaut #}
+
+{% if 'ROLE_STUDENT' in app.user.roles %}
+    {% set layout = 'basestudent.html.twig' %}
+{% elseif 'ROLE_PARENT' in app.user.roles %}
+    {% set layout = 'baseparent.html.twig' %}
+
+{% endif %}
+{% extends layout %}
+
+{% block title %}Liste des Ressources{% endblock %}
+
+{% block body %}
+
+ 
+<section class="home_banner_area">
+
+<div class="main_title">
+<h2 class="mb-3 text-blue">Listes Des Categories</h2>
+<p>
+Chers Utilisateurs ,n'hesitez pas de consulter Nos Categories  
+</p>
+    
+<div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Category</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for ressource in ressources %}
+            <tr>
+                
+                <td>{{ ressource.titre }}</td>
+                <td>{{ ressource.description }}</td>
+                <td>{{ ressource.type }}</td>
+                <td>{{ ressource.category.titre }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun evenements trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

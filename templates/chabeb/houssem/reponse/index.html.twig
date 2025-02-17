@@ -1,0 +1,50 @@
+{% extends 'baseback.html.twig' %}
+{% block title %}Liste des Réponses{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-center text-primary fw-bold">Liste des Réponses</h1>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{{ path('reponse_new', {'questionId': questionId}) }}" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> Ajouter une réponse
+        </a>
+        <a href="{{ path('question_index', {'examenId': question.examen.id}) }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Retour aux Questions
+        </a>
+    </div>
+
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Reponse Correcte</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            {% for reponse in reponses %}
+                <tr>
+                    <td class="align-middle">{{ reponse.estCorrecte }}</td> {# Use the getter method #}
+                    <td class="align-middle">
+                        <a href="{{ path('reponse_edit', {'id': reponse.id}) }}" class="btn btn-warning btn-sm me-2">
+                            <i class="fas fa-edit"></i> Modifier
+                        </a>
+                        <form method="post" action="{{ path('reponse_delete', {'id': reponse.id}) }}" 
+                              style="display:inline;" 
+                              onsubmit="return confirm('Voulez-vous vraiment supprimer cette réponse ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reponse.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Supprimer
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2" class="text-muted text-center">Aucune réponse trouvée.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

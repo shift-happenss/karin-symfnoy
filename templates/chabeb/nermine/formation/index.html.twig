@@ -1,0 +1,34 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Liste des Formations{% endblock %}
+
+{% block body %}
+<h1>Liste des Formations</h1>
+<a href="{{ path('formation_new') }}">Ajouter une formation</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.id }}</td>
+                <td>{{ formation.titre }}</td>
+                <td>
+                    <a href="{{ path('formation_show', { id: formation.id }) }}">Voir</a>
+                    <a href="{{ path('formation_edit', { id: formation.id }) }}">Modifier</a>
+                    <form method="post" action="{{ path('formation_delete', { id: formation.id }) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ formation.id) }}">
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

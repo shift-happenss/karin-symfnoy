@@ -1,0 +1,52 @@
+{% extends 'baseparent.html.twig' %}
+
+{% block title %}Liste des Events pour les Parents{% endblock %}
+
+{% block body %}
+
+ 
+<section class="home_banner_area">
+
+<div class="main_title">
+<h2 class="mb-3 text-blue">Listes Des Evenements</h2>
+<p>
+Chers Parents ,n'hesitez pas de consulter Nos Evenements et surtout Participer  
+</p>
+    
+<div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                
+                <th>Contenu</th>
+                <th>Lieu</th>
+                <th>Date de Début</th>
+                <th>Date de Fin</th>
+                <th>Type</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                
+                <td>{{ evenement.contenu }}</td>
+                <td>{{ evenement.lieu }}</td>
+                <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evenement.type }}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun evenements trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

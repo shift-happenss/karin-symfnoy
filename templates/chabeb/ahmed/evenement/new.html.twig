@@ -1,0 +1,16 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Nouvel Événement{% endblock %}
+
+{% block body %}
+{{ parent() }}
+<div style="margin-top: 100px;">
+    <h1>Créer un nouvel événement</h1>
+    {{ form_start(form, { 'attr': { 'novalidate': 'novalidate' } }) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-success">Enregistrer</button>
+    {{ form_end(form) }}
+    <a href="{{ path('evenement_index') }}" class="btn btn-secondary">Retour</a>
+</div>
+{% endblock %}

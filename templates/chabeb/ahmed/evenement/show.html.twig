@@ -1,0 +1,17 @@
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Détails de l'Événement{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+    <h1>{{ evenement.type }}</h1>
+
+    <p><strong>contenu:</strong> {{ evenement.contenu }}</p>
+    <p><strong>Lieu: </strong> {{ evenement.lieu }}</p>
+    <p><strong>Début: </strong> {{ evenement.dateDebut|date('d/m/Y H:i') }}</p>
+    <p><strong>Fin: </strong> {{ evenement.dateFin|date('d/m/Y H:i') }}</p>
+    
+    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}" class="btn btn-primary">Modifier</a>
+    <a href="{{ path('evenement_index') }}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

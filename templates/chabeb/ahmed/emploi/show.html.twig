@@ -1,0 +1,16 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Détails de l'Emploi{% endblock %}
+
+{% block body %}
+{{ parent() }}
+<div style="margin-top: 100px;">
+  <h1>{{ emploi.titre }}</h1>
+
+  <p><strong>Description:</strong> {{ emploi.description }}</p>
+  <p><strong>Propriétaire:</strong> {{ emploi.proprietaire.name }}</p>
+
+  <a href="{{ path('emploi_edit', {'id': emploi.id}) }}" class="btn btn-primary">Modifier</a>
+  <a href="{{ path('emploi_index') }}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+{% endblock %}

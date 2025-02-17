@@ -1,0 +1,18 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Détails de la Question{% endblock %}
+
+{% block body %}
+    <h1>Question: {{ question.texte }}</h1>
+
+    <h2>Réponses :</h2>
+    <ul>
+        {% for reponse in reponses %}
+            <li>{{ reponse.texte }}</li>
+        {% else %}
+            <li>Aucune réponse disponible.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('reponse_index', {'questionId': question.id}) }}" class="btn btn-secondary">Retour aux réponses</a>
+{% endblock %}

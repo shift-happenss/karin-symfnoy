@@ -1,0 +1,42 @@
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Examens associés au cours{% endblock %}
+
+{% block body %}
+    <h1>Examens associés au cours #{{ coursId }}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Cours associés</th>
+            
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for examen in examens %}
+            <tr>
+                
+                <td>{{ examen.titre }}</td>
+                <td>{{ examen.description }}</td>
+                <td>{{ examen.cours.titre }}</td>
+               
+                <td>
+                    <a href="{{ path('examen_show', {'id': examen.id}) }}" class="btn btn-primary">Voir</a>
+                    <a href="{{ path('passer_examen', {'id': examen.id}) }}" class="btn btn-success">Passer l'examen</a>
+                </td>
+                <td>{{ examen.note }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun examen trouvé pour ce cours.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

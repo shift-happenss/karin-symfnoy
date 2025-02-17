@@ -1,0 +1,11 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Détails de la Catégorie{% endblock %}
+
+{% block body %}
+    <h1>Détails de la Catégorie</h1>
+    <p><strong>ID :</strong> {{ categorie.id }}</p>
+    <p><strong>Description:</strong> {{ categorie.name }}</p>
+    <p><strong>Description:</strong> {{ categorie.description }}</p>
+    <a href="{{ path('categorie_index') }}" class="btn btn-secondary">Retour</a>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% set layout = 'baseparent.html.twig' %} {# Valeur par défaut #}
+
+{% if 'ROLE_STUDENT' in app.user.roles %}
+    {% set layout = 'basestudent.html.twig' %}
+{% elseif 'ROLE_PARENT' in app.user.roles %}
+    {% set layout = 'baseparent.html.twig' %}
+{% elseif 'ROLE_TEACHER' in app.user.roles %}
+    {% set layout = 'baseProfile.html.twig' %}
+{% endif %}
+{% extends layout %}
+
+{% block title %}Liste des Categories{% endblock %}
+
+{% block body %}
+
+ 
+<section class="home_banner_area">
+
+<div class="main_title">
+<h2 class="mb-3 text-blue">Listes Des Categories</h2>
+<p>
+Chers Utilisateurs ,n'hesitez pas de consulter Nos Categories  
+</p>
+    
+<div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                
+                <th>Titre</th>
+                <th>Description</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categorys %}
+            <tr>
+                
+                <td>{{ category.titre }}</td>
+                <td>{{ category.description}}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun evenements trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

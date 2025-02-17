@@ -1,0 +1,33 @@
+security:
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: id
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            lazy: true
+            provider: app_user_provider  # Utiliser le provider basé sur l'entité User
+            custom_authenticator: App\Security\AuthAuthenticator
+            logout:
+                path: /logout       # Symfony écoutera les requêtes de déconnexion sur ce chemin
+                target: /home
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+
+    access_control:
+       
+        - { path: /profile/t, roles: ROLE_TEACHER } # Accès pour les enseignants
+        - { path: /profile/s, roles: ROLE_STUDENT } # Accès pour les étudiants
+        - { path: /profile/p, roles: ROLE_PARENT }  # Accès pour les parents

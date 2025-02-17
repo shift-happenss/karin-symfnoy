@@ -1,0 +1,41 @@
+
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Liste des Certificats{% endblock %}
+{% block body %}
+
+
+    <h2>Liste des Certificats</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom du Participant</th>
+                <th>Formation</th>
+                <th>Date d'Obtention</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for certificat in certificats %}
+                <tr>
+                    <td>{{ certificat.id }}</td>
+                    <td>{{ certificat.userName }} </td>
+                    <td>{{ certificat.formation.titre }}</td>
+                    <td>{{ certificat.dateIssued|date('d/m/Y') }}</td>
+                     <td>
+                    <a href="{{ path('certificat_show', { id: certificat.id }) }}" class="btn btn-info btn-sm">
+                        👀 Visualiser
+                    </a>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun certificat trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
+{% endblock %}

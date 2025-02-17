@@ -1,0 +1,60 @@
+{# templates/examen/index.html.twig #}
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Liste des Examens{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Liste des Examens</h1>
+
+        <div class="mb-4">
+            <a href="{{ path('examen_new') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Créer un nouvel examen
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Cours</th>
+                        <th>Note</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for examen in examens %}
+                        <tr>
+                            <td>{{ examen.titre }}</td>
+                            <td>{{ examen.description }}</td>
+                            <td>{{ examen.cours.titre }}</td>
+                            <td>{{ examen.note is not null ? examen.note : '00' }}</td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <a href="{{ path('question_index', {'examenId': examen.id}) }}" class="btn btn-info btn-sm">
+                                        <i class="fas fa-eye"></i> Questions
+                                    </a>
+                                    <a href="{{ path('examen_edit', {'id': examen.id}) }}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i> Modifier
+                                    </a>
+                                    <form method="post" action="{{ path('examen_delete', {'id': examen.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet examen ?');" class="d-inline">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ examen.id) }}">
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i> Supprimer
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center">Aucun examen trouvé</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,311 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<section class="banner_area">
+<div class="banner_inner d-flex align-items-center">
+<div class="overlay"></div>
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-6">
+<div class="banner_content text-center">
+<h2>About Us</h2>
+<div class="page_link">
+<a class="nav-link" href="{{ path('homepage') }}">Acceuil</a>
+<a class="nav-link" href="{{ path('about') }}">A propos</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="about_area section_gap">
+<div class="container">
+<div class="row h_blog_item">
+<div class="col-lg-6">
+<div class="h_blog_img">
+
+<img class="img-fluid" src="{{ asset('img/us.jpeg') }}" alt />
+</div>
+</div>
+<div class="col-lg-6">
+<div class="h_blog_text">
+<div class="h_blog_text_inner left right">
+<h4>Bienvenu A Karini</h4>
+<p>
+Notre équipe est composée de passionnés et d'experts dans des domaines variés, 
+unis par l'objectif commun de créer des solutions numériques qui facilitent la gestion de projets et la communication. 
+</p>
+<p>
+
+Nous croyons fermement que la technologie peut simplifier la vie quotidienne des professionnels tout en offrant une flexibilité 
+et une efficacité accrues. Notre mission est de fournir une plateforme intuitive et sécurisée, adaptée aux besoins des entreprises modernes.
+ Grâce à Karini Plateforme, nous offrons une expérience de gestion collaborative optimisée, où chaque utilisateur peut gérer ses projets avec facilité et en toute confiance.
+
+
+</p>
+<a class="primary-btn" href="#">
+Glissez <i class="ti-arrow-right ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="feature_area section_gap_top title-bg">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-5">
+<div class="main_title">
+<h2 class="mb-3 text-white">Awesome Feature</h2>
+<p>
+Replenish man have thing gathering lights yielding shall you
+</p>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-4 col-md-6">
+<div class="single_feature">
+<div class="icon"><span class="flaticon-student"></span></div>
+<div class="desc">
+<h4 class="mt-3 mb-2">Scholarship Facility</h4>
+<p>
+One make creepeth, man bearing theira firmament won't great
+heaven
+</p>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="single_feature">
+<div class="icon"><span class="flaticon-book"></span></div>
+<div class="desc">
+<h4 class="mt-3 mb-2">Sell Online Course</h4>
+<p>
+One make creepeth, man bearing theira firmament won't great
+heaven
+</p>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="single_feature">
+<div class="icon"><span class="flaticon-earth"></span></div>
+<div class="desc">
+<h4 class="mt-3 mb-2">Global Certification</h4>
+<p>
+One make creepeth, man bearing theira firmament won't great
+heaven
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<div class="testimonial_area section_gap">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-5">
+<div class="main_title">
+<h2 class="mb-3">Avis Clients</h2>
+<p>
+Les Membres Ingénieux de Notre Equipes
+</p>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="testi_slider owl-carousel">
+<div class="testi_item">
+<div class="row">
+<div class="col-lg-4 col-md-6">
+
+<img src="{{ asset('img/testimonials/houss.png') }}" alt />
+</div>
+<div class="col-lg-8">
+<div class="testi_text">
+<h4>Houssem Chaouachi</h4>
+<p>
+houssem est un garcon avec persévérance ,
+son goût pour l’apprentissage le poussent à se dépasser dans tout ce qu’il entreprend, inspirant respect et admiration
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="testi_item">
+<div class="row">
+<div class="col-lg-4 col-md-6">
+<img src="{{ asset('img/testimonials/ahmed.png') }}" alt />
+</div>
+<div class="col-lg-8">
+<div class="testi_text">
+<h4>Ahmed Drirarir</h4>
+<p>
+
+Ahmed est un modèle de discipline et de détermination. 
+Il possède une capacité remarquable à rester concentré sur ses objectifs, tout en soutenant les autres autour de lui. 
+
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="testi_item">
+<div class="row">
+<div class="col-lg-4 col-md-6">
+<img src="{{ asset('img/testimonials/ines.png') }}" alt />
+</div>
+<div class="col-lg-8">
+<div class="testi_text">
+<h4>Ines Chtioui</h4>
+<p>
+Ines est une fille dotée d’une sensibilité remarquable, capable de comprendre les émotions des autres avec une facilité naturelle.
+Son calme et sa bienveillance font d’elle une personne à qui l’on peut toujours se confier. 
+
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="testi_item">
+<div class="row">
+<div class="col-lg-4 col-md-6">
+<img src="{{ asset('img/testimonials/aziz.png') }}" alt />
+
+</div>
+<div class="col-lg-8">
+<div class="testi_text">
+<h4>Aziz Chelly</h4>
+<p>
+Aziz est un esprit brillant et curieux, toujours prêt à explorer de nouveaux horizons.
+ Il se distingue par sa capacité à penser de manière stratégique et à résoudre des problèmes avec créativité.
+
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="testi_item">
+<div class="row">
+<div class="col-lg-4 col-md-6">
+<img src="{{ asset('img/testimonials/salma.png') }}" alt />
+</div>
+<div class="col-lg-8">
+<div class="testi_text">
+<h4>Salma Briki</h4>
+<p>
+Salma est une jeune femme dynamique et pleine d’énergie, toujours prête à relever de nouveaux défis. 
+Son ambition et sa détermination lui permettent de surmonter les obstacles avec élégance et assurance.
+
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="testi_item">
+<div class="row">
+<div class="col-lg-4 col-md-6">
+<img src="{{ asset('img/testimonials/nermine.png') }}" alt />
+</div>
+<div class="col-lg-8">
+<div class="testi_text">
+<h4>Nermine eRokh</h4>
+<p>
+Nermine est une force tranquille, alliant douceur et persévérance. 
+Elle excelle dans tout ce qu’elle entreprend grâce à son esprit méthodique et sa rigueur. 
+
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer class="footer-area section_gap">
+<div class="container">
+<div class="row">
+<div class="col-lg-2 col-md-6 single-footer-widget">
+<h4>Top Products</h4>
+<ul>
+<li><a href="#">Managed Website</a></li>
+<li><a href="#">Manage Reputation</a></li>
+<li><a href="#">Power Tools</a></li>
+<li><a href="#">Marketing Service</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-6 single-footer-widget">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="#">Jobs</a></li>
+<li><a href="#">Brand Assets</a></li>
+<li><a href="#">Investor Relations</a></li>
+<li><a href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-6 single-footer-widget">
+<h4>Features</h4>
+<ul>
+<li><a href="#">Jobs</a></li>
+<li><a href="#">Brand Assets</a></li>
+<li><a href="#">Investor Relations</a></li>
+<li><a href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-6 single-footer-widget">
+<h4>Resources</h4>
+<ul>
+<li><a href="#">Guides</a></li>
+<li><a href="#">Research</a></li>
+<li><a href="#">Experts</a></li>
+<li><a href="#">Agencies</a></li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-6 single-footer-widget">
+<h4>Newsletter</h4>
+<p>You can trust us. we only send promo offers,</p>
+<div class="form-wrap" id="mc_embed_signup">
+<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+<input class="form-control" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'" required type="email" />
+<button class="click-btn btn btn-default">
+<span>subscribe</span>
+</button>
+<div style="position: absolute; left: -5000px;">
+<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value type="text" />
+</div>
+<div class="info"></div>
+</form>
+</div>
+</div>
+</div>
+<div class="row footer-bottom d-flex justify-content-between">
+<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+
+
+
+</p>
+<div class="col-lg-4 col-sm-12 footer-social">
+<a href="#"><i class="ti-facebook"></i></a>
+<a href="#"><i class="ti-twitter"></i></a>
+<a href="#"><i class="ti-dribbble"></i></a>
+<a href="#"><i class="ti-linkedin"></i></a>
+</div>
+</div>
+</div>
+</footer>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Modifier la categorie{% endblock %}
+
+{% block body %}
+    <h1>Modifier la Catégorie</h1>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

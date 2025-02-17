@@ -1,0 +1,54 @@
+{% extends 'basestudent.html.twig' %}
+
+{% block title %}Liste des Cours pour les Étudiants{% endblock %}
+
+{% block body %}
+
+ 
+<section class="home_banner_area">
+
+<div class="main_title">
+<h2 class="mb-3 text-blue">Listes Des Cours</h2>
+<p>
+Chers Etudiants ,n'hesitez pas de consulter vos cours régulièrements  
+</p>
+    
+<div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Date de Début</th>
+                <th>Date de Fin</th>
+                <th>lien</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cour in cours %}
+            <tr>
+                
+                <td>{{ cour.titre }}</td>
+                <td>{{ cour.description }}</td>
+                <td>{{ cour.dateDebut ? cour.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cour.dateFin ? cour.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cour.lien }}</td>
+                <td>
+                    <a href="{{ path('examen_par_cours', {'coursId': cour.id}) }}" class="btn btn-primary">Voir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun cours trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

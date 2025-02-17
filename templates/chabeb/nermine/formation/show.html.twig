@@ -1,0 +1,82 @@
+{% set layout = 'baseback.html.twig' %} {# Valeur par défaut #}
+
+{% if 'ROLE_STUDENT' in app.user.roles %}
+    {% set layout = 'basestudent.html.twig' %}
+{% elseif 'ROLE_PARENT' in app.user.roles %}
+    {% set layout = 'baseparent.html.twig' %}
+{% elseif 'ROLE_TEACHER' in app.user.roles %}
+    {% set layout = 'baseProfile.html.twig' %}
+{% endif %}
+
+{% extends layout %}
+
+{% block title %}Détails de la Formation{% endblock %}
+
+{% block body %}
+   <div class="content_wrapper">
+            <h4 class="title">Descriprion</h4>
+            <div class="content">
+              {{formation.description}}
+              
+            </div>
+            
+             
+            <h4 class="title">Contenu</h4>
+            <br>
+            <!-- Image -->
+            {% if formation.urlImage %}
+            <img src="{{ asset('uploads/' ~ formation.urlImage) }}" alt="Image de la formation" class="img-fluid">
+        {% endif %}
+        
+            <div class="content">
+              <div class="container mt-4">
+               
+                <!-- Contenu Texte -->
+                {% if formation.contenuTexte %}
+                    <div class="mb-4">
+                        
+                        <p>{{ formation.contenuTexte }}</p>
+                    </div>
+                {% endif %}
+                  <br>
+                
+                <!-- Vidéo -->
+                {% if formation.urlVideo %}
+                <div class="mb-4">
+                    <a href="{{ formation.urlVideo }}" target="_blank" class="btn btn-primary">
+                        Consulter la vidéo
+                    </a>
+            
+                    {% if "youtube.com" in formation.urlVideo or "youtu.be" in formation.urlVideo %}
+                        {% set videoId = formation.urlVideo|split('v=')|last|split('&')|first %}
+                        <iframe width="560" height="315" 
+                                src="https://www.youtube.com/embed/{{ videoId }}" 
+                                frameborder="0" allowfullscreen>
+                        </iframe>
+                    {% else %}
+                        <p>Impossible d'afficher la vidéo ici. Veuillez cliquer sur le lien.</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+                
+                
+        
+                <!-- Fichier -->
+                {% if formation.urlFichier %}
+                    <div class="mb-4">
+                        <h2>Fichier à Télécharger</h2>
+                        <a href="{{ asset('uploads/files/' ~ formation.urlFichier) }}" class="btn btn-primary" download>
+                            Télécharger le fichier
+                        </a>
+                    </div>
+                {% endif %}
+        
+
+    <div class="mt-4">
+        <a href="{{ path('formation_index') }}" class="btn btn-secondary">Retour à la liste des formations</a>
+    </div>
+    <div class="mt-4">
+              <a  href="{{ path('obtenir_certificat', {'id': formation.id}) }}" class="btn btn-primary">Obtenir certificat</a>
+          </div>
+{% endblock %}

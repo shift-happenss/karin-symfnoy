@@ -1,0 +1,10 @@
+{% extends 'basestudent.html.twig' %}
+
+{% block title %}Résultat Examen{% endblock %}
+
+{% block body %}
+    <h1>Résultat de l'Examen: {{ examen.titre }}</h1>
+    <p>Votre note: <strong>{{ note }}/20</strong></p>
+
+    <a href="{{ path('passer_examen', { id: examen.id }) }}">Repasser l'examen</a>
+{% endblock %}

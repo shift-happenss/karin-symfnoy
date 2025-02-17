@@ -1,0 +1,56 @@
+{% set layout = 'baseparent.html.twig' %} {# Valeur par défaut #}
+
+{% if 'ROLE_STUDENT' in app.user.roles %}
+    {% set layout = 'basestudent.html.twig' %}
+{% elseif 'ROLE_PARENT' in app.user.roles %}
+    {% set layout = 'baseparent.html.twig' %}
+{% elseif 'ROLE_TEACHER' in app.user.roles %}
+    {% set layout = 'baseProfile.html.twig' %}
+{% endif %}
+{% extends layout %}
+
+{% block title %}Liste des Formations{% endblock %}
+
+{% block body %}
+
+ 
+<section class="home_banner_area">
+
+<div class="main_title">
+<h2 class="mb-3 text-blue">Listes Des Formations</h2>
+<p>
+Chers Utilisateurs ,n'hesitez pas de consulter Nos FORMATIONS régulièrements  
+</p>
+    
+<div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.id }}</td>
+                <td>{{ formation.titre }}</td>
+                <td>
+                    <a href="{{ path('formation_show', { id: formation.id }) }}">Voir</a></td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

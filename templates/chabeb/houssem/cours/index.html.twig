@@ -1,0 +1,45 @@
+{# templates/cours/index.html.twig #}
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Liste des Cours{% endblock %}
+
+{% block body %}
+    <h1>Liste des Cours</h1>
+    <a href="{{ path('cours_new') }}" class="btn btn-primary">Créer un nouveau cours</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Date de Début</th>
+                <th>Date de Fin</th>
+                <th>Lien</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cour in cours %}
+            <tr>
+                <td>{{ cour.titre }}</td>
+                <td>{{ cour.description }}</td>
+                <td>{{ cour.dateDebut ? cour.dateDebut|date('Y-m-d H:i') : '' }}</td>
+                <td>{{ cour.dateFin ? cour.dateFin|date('Y-m-d H:i') : '' }}</td>
+                <td><a href="{{ cour.lien }}" target="_blank">{{ cour.lien }}</a></td>
+                <td>
+                    <a href="{{ path('cours_show', {'id': cour.id}) }}" class="btn btn-info">Voir</a>
+                    <a href="{{ path('cours_edit', {'id': cour.id}) }}" class="btn btn-warning">Modifier</a>
+                    <form method="post" action="{{ path('cours_delete', {'id': cour.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce cours ?');" style="display: inline-block;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cour.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun cours trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

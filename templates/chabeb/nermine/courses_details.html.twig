@@ -1,0 +1,227 @@
+{% extends 'baseProfile.html.twig' %}
+
+{% block body %}
+  
+
+  <section class="course_details_area section_gap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 course_details_left">
+          <div class="main_image">
+            <img class="img-fluid" src="img/courses/course-details.jpg" alt>
+          </div>
+          <div class="content_wrapper">
+            <h4 class="title">Descriprion</h4>
+            <div class="content">
+              {{formation.description}}
+              
+              
+            </div>
+            <h4 class="title">Eligibilité</h4>
+            <div class="content">
+              
+              
+              
+            </div>
+            <h4 class="title">Contenu</h4>
+            <br>
+            <!-- Image -->
+            {% if formation.urlImage %}
+            <img src="{{ asset('uploads/' ~ formation.urlImage) }}" alt="Image de la formation" class="img-fluid">
+        {% endif %}
+        
+            <div class="content">
+              <div class="container mt-4">
+               
+                <!-- Contenu Texte -->
+                {% if formation.contenuTexte %}
+                    <div class="mb-4">
+                        
+                        <p>{{ formation.contenuTexte }}</p>
+                    </div>
+                {% endif %}
+                  <br>
+                <!-- Vidéo -->
+                {% if formation.urlVideo %}
+                <div class="mb-4">
+                    <a href="{{ formation.urlVideo }}" target="_blank" class="btn btn-primary">
+                        Consulter la vidéo
+                    </a>
+            
+                    {% if "youtube.com" in formation.urlVideo or "youtu.be" in formation.urlVideo %}
+                        {% set videoId = formation.urlVideo|split('v=')|last|split('&')|first %}
+                        <iframe width="560" height="315" 
+                                src="https://www.youtube.com/embed/{{ videoId }}" 
+                                frameborder="0" allowfullscreen>
+                        </iframe>
+                    {% else %}
+                        <p>Impossible d'afficher la vidéo ici. Veuillez cliquer sur le lien.</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+                
+                
+        
+                <!-- Fichier -->
+                {% if formation.urlFichier %}
+                    <div class="mb-4">
+                        <h2>Fichier à Télécharger</h2>
+                        <a href="{{ asset('uploads/files/' ~ formation.urlFichier) }}" class="btn btn-primary" download>
+                            Télécharger le fichier
+                        </a>
+                    </div>
+                {% endif %}
+        
+                <!-- Détails supplémentaires -->
+                
+            </div>
+        
+            <div class="mt-4">
+                <a href="{{ path('app_courses_index') }}" class="btn btn-secondary">Retour à la liste des formations</a>
+            </div>
+            <div class="mt-4">
+              <a  href="{{ path('obtenir_certificat', {'id': formation.id}) }}" class="btn btn-primary">Obtenir certificat</a>
+          </div>
+                
+               
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 right-contents">
+          <ul>
+            <li>
+              <a class="justify-content-between d-flex" href="#">
+                <p>Trainer’s Name</p>
+                <span class="or">{{formation.formateur}}</span>
+              </a>
+            </li>
+            
+            
+            
+          </ul>
+          <h4 class="title">Reviews</h4>
+          <div class="content">
+            <div class="review-top row pt-40">
+              <div class="col-lg-12">
+                <h6 class="mb-15">donner moi ton evaluation</h6>
+                <div class="d-flex flex-row reviews justify-content-between">
+                  <span>Quality</span>
+                  <div class="star">
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star"></i>
+                    <i class="ti-star"></i>
+                  </div>
+                  <span>Outstanding</span>
+                </div>
+                <div class="d-flex flex-row reviews justify-content-between">
+                  <span>Puncuality</span>
+                  <div class="star">
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star"></i>
+                    <i class="ti-star"></i>
+                  </div>
+                  <span>Outstanding</span>
+                </div>
+                <div class="d-flex flex-row reviews justify-content-between">
+                  <span>Quality</span>
+                  <div class="star">
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star checked"></i>
+                    <i class="ti-star"></i>
+                    <i class="ti-star"></i>
+                  </div>
+                  <span>Outstanding</span>
+                </div>
+              </div>
+            </div>
+            <div class="feedeback">
+              <h6>Your Feedback</h6>
+              <textarea name="feedback" class="form-control" cols="10" rows="10"></textarea>
+              <div class="mt-10 text-right">
+                <a href="#" class="primary-btn2 text-right rounded-0 text-white">Submit</a>
+              </div>
+            </div>
+            <div class="comments-area mb-30">
+              <div class="comment-list">
+                <div class="single-comment single-reviews justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                      <img src="img/blog/c1.jpg" alt>
+                    </div>
+                    <div class="desc">
+                      <h5><a href="#">Emilly Blunt</a>
+                        <div class="star">
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star"></span>
+                          <span class="ti-star"></span>
+                        </div>
+                      </h5>
+                      <p class="comment">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="comment-list">
+                <div class="single-comment single-reviews justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                      <img src="img/blog/c2.jpg" alt>
+                    </div>
+                    <div class="desc">
+                      <h5><a href="#">Elsie Cunningham</a>
+                        <div class="star">
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star"></span>
+                          <span class="ti-star"></span>
+                        </div>
+                      </h5>
+                      <p class="comment">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="comment-list">
+                <div class="single-comment single-reviews justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                      <img src="img/blog/c3.jpg" alt>
+                    </div>
+                    <div class="desc">
+                      <h5><a href="#">Maria Luna</a>
+                        <div class="star">
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star checked"></span>
+                          <span class="ti-star"></span>
+                          <span class="ti-star"></span>
+                        </div>
+                      </h5>
+                      <p class="comment">
+                        
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Ajouter une réponse{% endblock %}
+
+{% block body %}
+<div style="margin-top: 100px;">
+    <h1>Ajouter une réponse</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.question) }}
+        {{ form_row(form.estCorrecte) }}
+        <button type="submit" class="btn btn-success">Ajouter</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('reponse_index', {'questionId': question.id}) }}" class="btn btn-secondary">Retour</a>
+</div>
+{% endblock %}

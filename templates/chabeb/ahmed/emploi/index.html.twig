@@ -1,0 +1,61 @@
+{% extends 'baseback.html.twig' %}
+{% block title %}Liste des Emplois{% endblock %}
+
+{% block body %}
+{{ parent() }}
+  <h1>Liste des Emplois</h1>
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+
+
+  {# Formulaire de filtrage #}
+    <form method="get">
+        <div class="form-group">
+            <label for="titre">titre </label>
+            <input type="text" name="titre" id="titre" class="form-control" value="{{ titre }}">
+        </div>
+        <div class="form-group">
+            <label for="proprietaire">proprietaire</label>
+            <input type="proprietaire" name="proprietaire" id="proprietaire" class="form-control" value="{{ proprietaire }}">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">chercher</button>
+    </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Propriétaire</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for emploi in emplois %}
+        <tr>
+          <td>{{ emploi.id }}</td>
+          <td>{{ emploi.titre }}</td>
+          <td>{{ emploi.description|striptags|slice(0, 50) ~ '...' }}</td>
+          <td>{{ emploi.proprietaire.name }}</td>
+          <td>
+            <a href="{{ path('emploi_show', {'id': emploi.id}) }}" class="btn btn-info btn-sm">Voir</a>
+            <a href="{{ path('emploi_edit', {'id': emploi.id}) }}" class="btn btn-primary btn-sm">Modifier</a>
+            <form method="post" action="{{ path('emploi_delete', {'id': emploi.id}) }}" onsubmit="return confirm('Êtes-vous sûr ?');" style="display:inline-block;">
+              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ emploi.id) }}">
+              <button class="btn btn-danger btn-sm">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="5">Aucun emploi trouvé.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ path('emploi_new') }}" class="btn btn-success">Créer un nouvel emploi</a>
+{% endblock %}

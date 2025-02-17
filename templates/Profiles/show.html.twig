@@ -1,0 +1,48 @@
+{% extends 'baseparent.html.twig' %}
+
+{% block title %}ProfileParent{% endblock %}
+
+{% block body %}
+
+<div class="table-responsive table-data">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <td>Id</td>
+                                                    <td>name</td>
+                                                    <td>Family name</td>
+                                                    <td>Email</td>
+                                                    <td>Password</td>
+                                                    <td>Phone number</td>
+                                                    <td>role</td>
+                                                    <td>Actions</td>
+                                                    
+                                                    <td></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                              
+                                                  <tr>
+                                                      <td>{{ user.id }}</td>
+                                                       <td>{{ user.name }}</td>
+                                                       <td>{{ user.prenom }}</td>
+                                                       <td>{{ user.email }}</td>
+                                                       <td>{{ user.password }}</td>
+                                                       <td>{{ user.numtel }}</td>
+                                                       <td>{{ user.role }}</td>
+                                                       <td>
+                                                          <!-- Bouton de modification -->
+                                                         <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-warning btn-sm">
+                                                            <i class="fas fa-edit"></i> Update
+                                                         </a>
+
+                                                         
+                                                         </td>
+                                                    </tr>
+                                                 
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+{% endblock %}

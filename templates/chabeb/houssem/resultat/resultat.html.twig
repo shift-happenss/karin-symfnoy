@@ -1,0 +1,12 @@
+{% extends 'baseProfile.html.twig' %}
+
+{% block body %}
+    <h1>Résultat de l'examen : {{ examen.titre }}</h1>
+
+    <div class="resultat">
+        <h2>Votre note : {{ note }}/20</h2>
+        <p>Félicitations pour avoir terminé l'examen !</p>
+    </div>
+
+    <a href="{{ path('passer_examen', {'id': examen.id}) }}" class="btn btn-primary">Repasser l'examen</a>
+{% endblock %}
